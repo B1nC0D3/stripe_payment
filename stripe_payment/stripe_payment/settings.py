@@ -14,7 +14,7 @@ import os
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv('infra/.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +32,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,9 +84,13 @@ WSGI_APPLICATION = 'stripe_payment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME', None),
+        'USER': os.getenv('POSTGRES_USER', None),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', None),
+        'HOST': os.getenv('DB_HOST', None),
+        'PORT': os.getenv('DB_PORT', None)
+    },
 }
 
 
