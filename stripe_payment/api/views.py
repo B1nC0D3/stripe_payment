@@ -21,7 +21,7 @@ def buy_item(request, item_id):
         description=item.description,
     )
     price = stripe.Price.create(
-        unit_amount=item.price,
+        unit_amount=item.price*100,
         currency='usd',
         product=product.get('id')
     )
