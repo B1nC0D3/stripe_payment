@@ -12,16 +12,10 @@ username=admin
 password=1111
 ```
 В случае запуска локально:
-1. В корневой папке скачанного репозитория выполните:
-    ```
-    python3 -m venv venv    # use 'python' instead 'python3' for Win
-    source venv/bin/activate # source venv/Scripts/activate for Win
-    pip3 install -r stripe_payment/requirements.txt
-    ```
-2. C установленным Docker выполните следующее:
-    ```
+C установленным Docker выполните следующее:
+```
     docker-compose up 
-    ```
+```
 Сайт будет доступен по адресу: localhost
     
  
